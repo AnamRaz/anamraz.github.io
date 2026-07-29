@@ -16,9 +16,10 @@ const personSchema = {
   '@type': 'Person',
   name: site.name,
   url: site.url,
-  jobTitle: 'Software Engineer',
+  jobTitle: 'Senior Software Engineer',
   description,
-  knowsAbout: ['Software architecture', '.NET', 'Enterprise applications', 'SaaS products', 'Azure'],
+  knowsAbout: ['Software architecture', '.NET', 'Enterprise applications', 'JDE EnterpriseOne', 'ERP automation', 'SaaS products', 'Azure'],
+  sameAs: [site.links.github, site.links.linkedin],
 };
 ---
 
@@ -39,9 +40,14 @@ const personSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content={site.name} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={`${site.url}/social-card.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Rawnaz Anam, Senior Software Engineer" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site.url}/social-card.png`} />
     <script is:inline>
       (() => {
         const saved = localStorage.getItem('theme');

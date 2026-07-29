@@ -1,22 +1,23 @@
 /**
  * EDITABLE CONTENT
  * Update personal details, links, projects, skills, and case studies here.
- * Values beginning with "xxxxxxxxx" are intentionally unconfigured.
+ * Keep only approved, public links in this file.
  */
 
 export const site = {
   name: 'Rawnaz Anam',
-  role: 'Software Engineer | Enterprise Applications | SaaS Builder',
-  title: 'Rawnaz Anam — Software Engineer & SaaS Builder',
+  role: 'Senior Software Engineer',
+  positioning:
+    'Senior Software Engineer building enterprise applications, ERP integrations, workflow automation, and SaaS products.',
+  title: 'Rawnaz Anam | Senior Software Engineer',
   description:
-    'Software engineer building reliable enterprise applications and SaaS products with .NET, Azure, modern frontend systems, and pragmatic architecture.',
+    'Senior Software Engineer specializing in .NET, Azure, Angular, JDE EnterpriseOne, ERP automation, enterprise applications, and SaaS development.',
   url: 'https://anamraz.github.io',
   location: 'United States',
   links: {
     github: 'https://github.com/AnamRaz',
-    linkedin: 'xxxxxxxxx-linkedin-url',
-    contact: 'xxxxxxxxx-email-or-contact-url',
-    resume: 'xxxxxxxxx-resume-url',
+    linkedin: 'https://www.linkedin.com/in/rawnazanam/',
+    stockward: 'https://anamraz.github.io/stockward-website/',
   },
 } as const;
 
@@ -31,18 +32,18 @@ export const navigation = [
 export const impactAreas = [
   {
     number: '01',
-    title: 'Enterprise systems',
-    text: 'Modern applications that fit real business workflows, integrate with established systems, and remain dependable in production.',
+    title: 'Enterprise applications',
+    text: 'Business-critical .NET and Angular systems designed around operational workflows, reliable integrations, and long-term maintainability.',
   },
   {
     number: '02',
-    title: 'Product engineering',
-    text: 'SaaS capabilities shaped from business problems through architecture, delivery, and operational ownership.',
+    title: 'ERP & workflow automation',
+    text: 'Modern applications and automations that connect JDE EnterpriseOne, JDE Orchestrator, Oracle data, and the teams who depend on them.',
   },
   {
     number: '03',
-    title: 'Technical direction',
-    text: 'Clear tradeoffs, maintainable boundaries, and delivery practices that help engineering teams move with confidence.',
+    title: 'Architecture & product',
+    text: 'Technical guidance for production teams alongside hands-on SaaS architecture and development as the founder of Stockward.',
   },
 ] as const;
 
@@ -53,118 +54,115 @@ export type Project = {
   contributions: readonly string[];
   technologies: readonly string[];
   status?: string;
+  href?: string;
+  linkLabel?: string;
+  note?: string;
 };
 
 export const projects: readonly Project[] = [
   {
     title: 'Stockward',
-    eyebrow: 'SaaS product · Founder engineering',
+    eyebrow: 'SaaS product · Founder & software architect',
     summary:
-      'A multi-location restaurant operations platform bringing inventory, financial reporting, workforce scheduling, receipt processing, and external sales integration work into one focused product.',
+      'A multi-tenant restaurant operations platform designed to help multi-location operators manage inventory, financial workflows, scheduling, receipt processing, and external sales data.',
     contributions: [
-      'Modeling operational workflows across locations',
-      'Building database-backed reporting and receipt processing',
-      'Developing integration capabilities for external sales data',
+      'Designing multi-tenant, role-based operational workflows',
+      'Building reporting, scheduling, and OCR-assisted receipt processing',
+      'Preparing the platform for pilot production use',
     ],
-    technologies: ['.NET', 'Blazor', 'EF Core', 'SQL Server', 'Azure', 'OCR', 'External APIs'],
+    technologies: ['.NET 10', 'Blazor Server', 'EF Core', 'SQL Server', 'Azure', 'OCR', 'Role-based access', 'External integrations'],
+    status: 'Active development',
+    href: site.links.stockward,
+    linkLabel: 'Visit Stockward',
+    note: 'Product source is maintained privately while public product information is available through the Stockward website.',
   },
   {
-    title: 'Enterprise Application Modernization',
-    eyebrow: 'Enterprise delivery',
+    title: 'Enterprise Workflow Automation',
+    eyebrow: 'ERP integration · Operational impact',
     summary:
-      'Modernizing business workflows while connecting contemporary applications with established enterprise systems—without compromising production reliability.',
+      'Replacing manual and paper-heavy operational processes with maintainable integrations and automations across modern applications and enterprise systems.',
     contributions: [
-      'Improving application responsiveness and maintainability',
-      'Connecting modern interfaces to enterprise data workflows',
-      'Supporting production troubleshooting and operational continuity',
+      'Created and maintains more than 30 ERP and workflow automations',
+      'Connected .NET applications, JDE EnterpriseOne, JDE Orchestrator, and Oracle data',
+      'Saved thousands of employee hours annually while preserving operational reliability',
     ],
-    technologies: ['.NET', 'Angular', 'SQL Server', 'Oracle', 'JDE', 'REST APIs'],
+    technologies: ['.NET', 'JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'REST APIs', 'Workflow automation'],
   },
   {
-    title: 'Production Engineering & Architecture',
-    eyebrow: 'Engineering practice',
+    title: 'Enterprise Application Engineering',
+    eyebrow: 'Full-stack production systems',
     summary:
-      'Designing the foundations that let teams evolve business-critical software safely: explicit access control, observable workflows, and testable system boundaries.',
+      'Building and modernizing production applications that connect operational teams with the data and business systems they use every day.',
     contributions: [
-      'Secure authorization and database-backed workflows',
-      'Observability and production debugging practices',
-      'Deployment safety and regression coverage',
+      '.NET and Angular delivery across interfaces, APIs, and data workflows',
+      'Authorization and integration across Oracle, SQL Server, and business systems',
+      'Production troubleshooting, performance improvement, and reliability work',
     ],
-    technologies: ['ASP.NET Core', 'Azure', 'CI/CD', 'Monitoring', 'Testing'],
+    technologies: ['ASP.NET Core', 'Angular', 'REST APIs', 'SQL Server', 'Oracle', 'Authorization', 'Azure'],
   },
   {
-    title: 'Public Engineering Reference',
-    eyebrow: 'Upcoming · Public project',
+    title: 'Technical Leadership',
+    eyebrow: 'Engineering enablement',
     summary:
-      'A practical reference implementation documenting architecture decisions, delivery tradeoffs, and production-minded engineering in the open.',
+      'Helping developers and delivery teams make sound technical decisions and support business-critical systems with consistency.',
     contributions: [
-      'Architecture notes and decision records',
-      'End-to-end implementation and automated checks',
-      'Public documentation designed for reuse',
+      'Architecture guidance and pragmatic design review',
+      'Code reviews, troubleshooting, and testing support',
+      'Mentoring, development guidance, and consistent engineering practices',
     ],
-    technologies: ['Architecture', 'Documentation', 'Open source'],
-    status: 'In development',
+    technologies: ['Architecture guidance', 'Code review', 'Mentoring', 'Testing', 'Production support'],
   },
 ];
 
 export const skillGroups = [
-  { title: 'Backend', items: ['C#', '.NET', 'ASP.NET Core', 'Blazor', 'Entity Framework Core', 'REST APIs'] },
-  { title: 'Frontend', items: ['Angular', 'TypeScript', 'JavaScript', 'HTML', 'CSS'] },
-  { title: 'Cloud & delivery', items: ['Azure', 'GitHub Actions', 'CI/CD', 'Application configuration', 'Logging & monitoring'] },
-  { title: 'Data & enterprise', items: ['SQL Server', 'Oracle', 'JDE', 'Business-system integrations', 'Reporting workflows'] },
-  { title: 'Engineering', items: ['Software architecture', 'Authorization', 'Performance optimization', 'Production debugging', 'Testing', 'Technical leadership'] },
+  { title: 'Application development', items: ['C#', '.NET', 'ASP.NET Core', 'Blazor', 'Angular', 'TypeScript', 'REST APIs', 'Entity Framework Core'] },
+  { title: 'Enterprise systems', items: ['JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'ERP integrations', 'Workflow automation', 'Operational reporting'] },
+  { title: 'Cloud & delivery', items: ['Azure App Service', 'Azure SQL', 'Blob Storage', 'Key Vault', 'Application Insights', 'GitHub Actions', 'Docker', 'CI/CD'] },
+  { title: 'Architecture & production', items: ['Authentication & authorization', 'Multi-tenant architecture', 'Background processing', 'Production troubleshooting', 'Performance optimization', 'Logging & observability', 'Testing', 'Deployment safety'] },
+  { title: 'Leadership', items: ['Architecture guidance', 'Code reviews', 'Mentoring', 'Requirements discovery', 'Cross-functional problem solving'] },
 ] as const;
 
 export type CaseStudy = {
   title: string;
   intro: string;
-  sections: readonly { label: string; content: string }[];
+  sections: readonly { label: string; content: string; items?: readonly string[] }[];
 };
 
 export const caseStudy: CaseStudy = {
-  title: 'Making a business-critical application faster and easier to operate',
+  title: 'Modernizing Enterprise Workflows with JDE Automation',
   intro:
-    'A sanitized example of performance work in an enterprise environment. Details are intentionally generalized to protect employer and system confidentiality.',
+    'A sanitized view of enterprise automation work. Employer, application, and internal architecture details are intentionally omitted.',
   sections: [
     {
-      label: 'Business problem',
+      label: 'Problem',
       content:
-        'A frequently used workflow had become slow enough to interrupt day-to-day work and increase the burden on production support.',
+        'Operational workflows depended on manual entry, paper processes, or disconnected systems, adding avoidable effort and making consistent execution harder.',
     },
     {
       label: 'Constraints',
       content:
-        'The improvement needed to preserve established business behavior, work within existing enterprise integrations, and be released with low operational risk.',
-    },
-    {
-      label: 'Role',
-      content:
-        'Owned the technical investigation, shaped the remediation approach, and worked across application and data layers to validate the change.',
+        'Solutions had to work with existing ERP data, business rules, production operations, and legacy dependencies without disrupting daily work.',
     },
     {
       label: 'Approach',
       content:
-        'Traced the request path, isolated expensive operations, reviewed data-access patterns, and converted the findings into focused changes with regression checks.',
+        'Built and maintained integrations and automations using modern .NET applications, Oracle data, JDE EnterpriseOne, JDE Orchestrator, and supporting APIs.',
     },
     {
-      label: 'Architecture',
+      label: 'Engineering considerations',
       content:
-        'Kept responsibilities explicit across the user interface, application services, integration boundary, and database so each layer could be measured independently.',
-    },
-    {
-      label: 'Tradeoffs',
-      content:
-        'Preferred targeted, observable improvements over a broad rewrite, reducing delivery risk while leaving cleaner seams for future modernization.',
+        'Production automation required more than a successful happy path. Each workflow was shaped around operational safety and supportability.',
+      items: [
+        'Data validation and authorization',
+        'Failure handling and logging',
+        'Operational support and backward compatibility',
+        'Maintainability and gradual rollout',
+      ],
     },
     {
       label: 'Outcome',
       content:
-        'The workflow became more responsive and supportable, with clearer diagnostic signals for future production investigation. No confidential metrics are disclosed.',
-    },
-    {
-      label: 'Lessons learned',
-      content:
-        'Performance work is strongest when measurement, business context, and release safety are treated as one engineering problem—not separate activities.',
+        'More than 30 automated workflows were delivered and maintained, replacing manual processes and saving thousands of employee hours annually.',
     },
   ],
 };

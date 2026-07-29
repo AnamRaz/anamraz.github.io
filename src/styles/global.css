@@ -61,11 +61,13 @@ h1, h2, h3 { line-height: 1.05; letter-spacing: -0.045em; }
 [data-theme='dark'] .theme-toggle__moon { display: block; }
 .menu-toggle { display: none; }
 
-.hero { min-height: calc(100svh - var(--header)); display: grid; grid-template-columns: minmax(0, 4fr) minmax(250px, 1.2fr); gap: 8vw; align-items: end; padding-block: clamp(88px, 13vw, 170px) 74px; }
+.hero { min-height: calc(100svh - var(--header)); display: grid; grid-template-columns: minmax(0, 4fr) minmax(250px, 1.2fr); gap: 8vw; align-items: end; padding-block: clamp(70px, 9vw, 120px) 58px; }
 .hero__copy { min-width: 0; }
 .hero__kicker { display: flex; gap: 12px; align-items: center; margin-bottom: 30px; color: var(--muted); font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .hero__kicker span { width: 26px; height: 1px; background: var(--accent); }
-.hero h1 { max-width: 930px; margin-bottom: 35px; font-size: clamp(3.7rem, 7.3vw, 7rem); font-weight: 500; }
+.hero h1 { margin-bottom: 8px; font-size: clamp(2.25rem, 4.2vw, 4.5rem); font-weight: 500; }
+.hero__role { margin-bottom: 30px; color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 500; }
+.hero__statement { max-width: 900px; margin-bottom: 26px; font-size: clamp(3rem, 5.25vw, 5.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.05em; }
 em { color: var(--accent); font-family: Iowan Old Style, Baskerville, "Times New Roman", serif; font-weight: 500; }
 .hero__intro { max-width: 710px; margin-bottom: 38px; color: var(--muted); font-size: clamp(1.06rem, 1.7vw, 1.28rem); line-height: 1.65; }
 .hero__actions, .contact__actions { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
@@ -106,21 +108,27 @@ em { color: var(--accent); font-family: Iowan Old Style, Baskerville, "Times New
 .status { padding: 5px 10px; border: 1px solid var(--line); color: var(--muted); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 .project-card__body { display: grid; grid-template-columns: 1.35fr 1fr; gap: 8vw; margin-left: 65px; }
 .project-card h3 { margin-bottom: 18px; font-size: clamp(2rem, 3.4vw, 3.4rem); font-weight: 500; }
+.project-card h3 a { text-decoration: none; }
+.project-card h3 a:hover { color: var(--accent); }
 .project-card__summary { max-width: 620px; color: var(--muted); font-size: 1rem; }
+.project-card__note { max-width: 620px; margin: 22px 0 0; padding-left: 14px; border-left: 2px solid var(--accent); color: var(--muted); font-size: .78rem; }
 .project-card__contributions { margin: 5px 0 0; padding: 0; list-style: none; }
 .project-card__contributions li { position: relative; padding: 11px 0 11px 22px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
 .project-card__contributions li::before { content: '↳'; position: absolute; left: 0; color: var(--accent); }
 .tech-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 0 65px; padding: 0; list-style: none; }
 .tech-list li { padding: 5px 10px; border: 1px solid var(--line); color: var(--muted); font-size: .7rem; }
-.project-card--upcoming { background: repeating-linear-gradient(-45deg, transparent, transparent 8px, color-mix(in srgb, var(--line) 12%, transparent) 8px, color-mix(in srgb, var(--line) 12%, transparent) 9px); }
-
+.project-card__link { display: inline-flex; gap: 8px; margin: 28px 0 0 65px; align-items: center; border-bottom: 1px solid var(--line); font-size: .8rem; font-weight: 600; text-decoration: none; }
+.project-card__link:hover { color: var(--accent); border-color: var(--accent); }
 .case-study__grid { display: grid; grid-template-columns: repeat(2, 1fr); margin-left: 25%; border-top: 1px solid var(--line); }
 .case-study__grid article { position: relative; padding: 34px 36px 42px 0; border-bottom: 1px solid var(--line); }
 .case-study__grid article:nth-child(odd) { padding-right: 42px; border-right: 1px solid var(--line); }
 .case-study__grid article:nth-child(even) { padding-left: 42px; }
+.case-study__grid article:last-child:nth-child(odd) { grid-column: 1 / -1; padding-right: 0; border-right: 0; }
 .case-study__grid span { color: var(--accent); font-size: .68rem; }
 .case-study__grid h3 { margin: 26px 0 13px; font-size: 1.18rem; letter-spacing: -.02em; }
 .case-study__grid p { margin: 0; color: var(--muted); font-size: .87rem; }
+.case-study__grid ul { margin: 18px 0 0; padding-left: 18px; color: var(--muted); font-size: .82rem; }
+.case-study__grid li { margin-bottom: 6px; }
 
 .skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .skills-grid article { min-height: 360px; padding: 26px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -163,7 +171,9 @@ em { color: var(--accent); font-family: Iowan Old Style, Baskerville, "Times New
   .shell { width: min(calc(100% - 32px), var(--max)); }
   .brand__name { display: none; }
   .hero { min-height: auto; padding-block: 82px 58px; }
-  .hero h1 { max-width: 100%; font-size: clamp(2.7rem, 12.5vw, 3.5rem); overflow-wrap: break-word; }
+  .hero h1 { max-width: 100%; font-size: clamp(2rem, 9vw, 2.7rem); overflow-wrap: break-word; }
+  .hero__role { margin-bottom: 28px; }
+  .hero__statement { max-width: 100%; font-size: clamp(2.65rem, 12vw, 3.4rem); overflow-wrap: break-word; }
   .hero__intro { max-width: 100%; overflow-wrap: break-word; }
   .hero__actions { gap: 15px; }
   .hero__note { margin-top: 32px; }
@@ -171,7 +181,7 @@ em { color: var(--accent); font-family: Iowan Old Style, Baskerville, "Times New
   .about__content, .project-card__body { grid-template-columns: 1fr; gap: 24px; }
   .project-card__top { grid-template-columns: 48px 1fr; }
   .project-card__top .status { grid-column: 2; width: max-content; margin-top: 12px; }
-  .project-card__body, .tech-list { margin-left: 48px; }
+  .project-card__body, .tech-list, .project-card__link { margin-left: 48px; }
   .case-study__grid { grid-template-columns: 1fr; }
   .case-study__grid article, .case-study__grid article:nth-child(odd), .case-study__grid article:nth-child(even) { padding: 30px 0; border-right: 0; }
   .skills-grid { grid-template-columns: 1fr; }

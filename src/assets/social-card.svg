@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Rawnaz Anam — Senior Software Engineer</title>
+  <desc id="description">Enterprise applications, ERP integrations, workflow automation, and SaaS products.</desc>
+  <rect width="1200" height="630" fill="#f5f1e8"/>
+  <rect x="0" y="0" width="28" height="630" fill="#163f36"/>
+  <rect x="84" y="78" width="58" height="58" fill="#163f36"/>
+  <text x="113" y="114" text-anchor="middle" fill="#f8f2e7" font-family="Arial, sans-serif" font-size="16" font-weight="700">RA</text>
+  <text x="84" y="232" fill="#17201d" font-family="Arial, sans-serif" font-size="34" font-weight="600">RAWNAZ ANAM</text>
+  <text x="84" y="310" fill="#17201d" font-family="Arial, sans-serif" font-size="72" font-weight="600">Senior Software Engineer</text>
+  <line x1="84" y1="365" x2="1116" y2="365" stroke="#c9c2b5"/>
+  <text x="84" y="430" fill="#5e6863" font-family="Arial, sans-serif" font-size="28">Enterprise applications · ERP integrations</text>
+  <text x="84" y="475" fill="#5e6863" font-family="Arial, sans-serif" font-size="28">Workflow automation · SaaS products</text>
+  <text x="84" y="555" fill="#d0813c" font-family="Georgia, serif" font-size="24" font-style="italic">anamraz.github.io</text>
+</svg>

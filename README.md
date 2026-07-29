@@ -73,17 +73,12 @@ To enable publishing:
 
 Local build success does not confirm a successful GitHub Pages deployment.
 
-## Remaining placeholders
+## Public links
 
-Replace every value beginning with `xxxxxxxxx` in
-[`src/content/site.ts`](src/content/site.ts):
-
-- LinkedIn profile URL
-- Contact email (`mailto:`) or contact-page URL
-- Résumé URL
-
-Until configured, missing public calls to action are rendered as disabled text
-instead of broken or invented links.
+Approved public profile and product links are centralized in
+[`src/content/site.ts`](src/content/site.ts). No résumé or email link is
+published; add either only when an approved public asset or professional
+address is intentionally available.
 
 ## License
 

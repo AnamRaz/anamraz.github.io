@@ -3,31 +3,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { caseStudy, impactAreas, projects, site, skillGroups } from '../content/site';
-
-const isConfigured = (value: string) => !value.startsWith('xxxxxxxxx');
 ---
 
 <BaseLayout>
   <section class="hero shell" id="top" aria-labelledby="hero-title">
     <div class="hero__copy">
-      <p class="hero__kicker"><span></span>{site.role}</p>
-      <h1 id="hero-title">Software that works<br />where business gets <em>complex.</em></h1>
+      <p class="hero__kicker"><span></span>Enterprise engineering · ERP automation · SaaS</p>
+      <h1 id="hero-title">{site.name}</h1>
+      <p class="hero__role">{site.role}</p>
+      <p class="hero__statement">Building enterprise applications, ERP integrations, workflow automation, and <em>SaaS products.</em></p>
       <p class="hero__intro">
         I design and deliver production systems using .NET, Blazor, Angular, Azure, SQL Server,
-        enterprise integrations, and AI-enabled workflows.
+        Oracle, and JDE EnterpriseOne. My work focuses on modernizing operational workflows,
+        improving reliability, and turning complex business processes into maintainable software.
       </p>
       <div class="hero__actions">
         <a class="button button--primary" href="#work">View my work <span aria-hidden="true">↘</span></a>
+        <a class="text-link" href={site.links.stockward} target="_blank" rel="noreferrer">Stockward <span aria-hidden="true">↗</span></a>
         <a class="text-link" href={site.links.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-        {isConfigured(site.links.linkedin)
-          ? <a class="text-link" href={site.links.linkedin}>LinkedIn <span aria-hidden="true">↗</span></a>
-          : <span class="text-link text-link--disabled" title="Add the LinkedIn URL in src/content/site.ts">LinkedIn <span aria-hidden="true">↗</span></span>}
+        <a class="text-link" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <aside class="hero__note" aria-label="Professional focus">
       <p>Currently focused on</p>
-      <strong>Enterprise modernization, pragmatic architecture, and building Stockward.</strong>
-      <span>Based in the United States · Working across systems, product, and delivery.</span>
+      <strong>Production applications, JDE automation, architecture guidance, and building Stockward.</strong>
+      <span>5+ years of professional software development · Based in the United States.</span>
     </aside>
   </section>
 
@@ -47,20 +47,19 @@ const isConfigured = (value: string) => !value.startsWith('xxxxxxxxx');
     <SectionHeading eyebrow="About" title="Engineering judgment grounded in production reality." />
     <div class="about__content">
       <p class="about__lead">
-        I build enterprise applications and cloud-based systems where technical decisions need to
-        hold up against real workflows, real integrations, and real operational pressure.
+        I own and support business-critical applications from requirements and architecture through
+        delivery, troubleshooting, and continued production operation.
       </p>
       <div class="about__details">
         <p>
-          My work spans .NET and Azure services, Blazor and Angular frontends, SQL-backed workflows,
-          and business-system development involving JDE and other enterprise integrations. I’m
-          comfortable moving between architecture, implementation, production troubleshooting, and
-          performance improvement.
+          My work bridges modern full-stack development and established enterprise systems. I build
+          .NET, Blazor, and Angular applications; connect them with Oracle, SQL Server, JDE
+          EnterpriseOne, and JDE Orchestrator; and automate workflows that operational teams rely on.
         </p>
         <p>
-          I’m also building Stockward, a SaaS product for multi-location restaurant operations.
-          Product ownership sharpens how I think about scope, maintainability, customer value, and
-          the compounding cost of unclear decisions.
+          I also provide architecture guidance, code reviews, troubleshooting, testing support, and
+          development guidance for other engineers. As founder and software architect of Stockward,
+          I apply the same production discipline to a multi-tenant SaaS product.
         </p>
       </div>
     </div>
@@ -87,6 +86,7 @@ const isConfigured = (value: string) => !value.startsWith('xxxxxxxxx');
           <span>{String(index + 1).padStart(2, '0')}</span>
           <h3>{section.label}</h3>
           <p>{section.content}</p>
+          {section.items && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}
         </article>
       ))}
     </div>
@@ -114,18 +114,11 @@ const isConfigured = (value: string) => !value.startsWith('xxxxxxxxx');
   <section class="contact shell" id="contact" aria-labelledby="contact-title">
     <p class="eyebrow">Start a conversation</p>
     <h2 id="contact-title">Building something that needs to work <em>for the long haul?</em></h2>
-    <p>
-      I’m interested in senior engineering, technical leadership, architecture, and thoughtful
-      consulting conversations.
-    </p>
+    <p>I’m interested in senior engineering, technical leadership, architecture, and thoughtful consulting conversations.</p>
     <div class="contact__actions">
-      {isConfigured(site.links.contact)
-        ? <a class="button button--light" href={site.links.contact}>Get in touch <span aria-hidden="true">↗</span></a>
-        : <span class="button button--light button--disabled" title="Add a contact URL in src/content/site.ts">Contact link coming soon</span>}
+      <a class="button button--light" href={site.links.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
       <a class="text-link text-link--light" href={site.links.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-      {isConfigured(site.links.linkedin)
-        ? <a class="text-link text-link--light" href={site.links.linkedin}>LinkedIn <span aria-hidden="true">↗</span></a>
-        : <span class="text-link text-link--light text-link--disabled">LinkedIn</span>}
+      <a class="text-link text-link--light" href={site.links.stockward} target="_blank" rel="noreferrer">Stockward <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -133,7 +126,7 @@ const isConfigured = (value: string) => !value.startsWith('xxxxxxxxx');
     <div class="shell footer__inner">
       <div>
         <a class="brand brand--footer" href="#top"><span class="brand__mark">RA</span><span class="brand__name">{site.name}</span></a>
-        <p>Software Engineer · Enterprise Applications · SaaS Builder</p>
+        <p>Senior Software Engineer · Enterprise Applications · SaaS Builder</p>
       </div>
       <div class="footer__meta">
         <p>© {new Date().getFullYear()} {site.name}</p>

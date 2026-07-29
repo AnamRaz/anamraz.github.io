@@ -9,7 +9,7 @@ interface Props {
 const { project, index } = Astro.props;
 ---
 
-<article class:list={['project-card', { 'project-card--upcoming': project.status }]}>
+<article class="project-card">
   <div class="project-card__top">
     <span class="project-card__index">{String(index + 1).padStart(2, '0')}</span>
     <p class="eyebrow">{project.eyebrow}</p>
@@ -17,8 +17,13 @@ const { project, index } = Astro.props;
   </div>
   <div class="project-card__body">
     <div>
-      <h3>{project.title}</h3>
+      <h3>
+        {project.href
+          ? <a href={project.href} target="_blank" rel="noreferrer">{project.title}</a>
+          : project.title}
+      </h3>
       <p class="project-card__summary">{project.summary}</p>
+      {project.note && <p class="project-card__note">{project.note}</p>}
     </div>
     <ul class="project-card__contributions">
       {project.contributions.map((contribution) => <li>{contribution}</li>)}
@@ -27,4 +32,9 @@ const { project, index } = Astro.props;
   <ul class="tech-list" aria-label={`${project.title} technologies`}>
     {project.technologies.map((technology) => <li>{technology}</li>)}
   </ul>
+  {project.href && (
+    <a class="project-card__link" href={project.href} target="_blank" rel="noreferrer">
+      {project.linkLabel ?? 'View project'} <span aria-hidden="true">↗</span>
+    </a>
+  )}
 </article>

@@ -1,0 +1,54 @@
+---
+import { navigation, site } from '../content/site';
+---
+
+<header class="site-header" data-header>
+  <div class="shell site-header__inner">
+    <a class="brand" href="#top" aria-label={`${site.name}, home`}>
+      <span class="brand__mark" aria-hidden="true">RA</span>
+      <span class="brand__name">{site.name}</span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" data-theme-toggle>
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+      </button>
+      <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+
+  const closeMenu = () => {
+    menuButton?.setAttribute('aria-expanded', 'false');
+    menuButton?.setAttribute('aria-label', 'Open navigation');
+    nav?.removeAttribute('data-open');
+  };
+
+  menuButton?.addEventListener('click', () => {
+    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+    nav?.toggleAttribute('data-open', !isOpen);
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', (event) => event.key === 'Escape' && closeMenu());
+
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>

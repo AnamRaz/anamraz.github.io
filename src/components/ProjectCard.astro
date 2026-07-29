@@ -1,0 +1,30 @@
+---
+import type { Project } from '../content/site';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+---
+
+<article class:list={['project-card', { 'project-card--upcoming': project.status }]}>
+  <div class="project-card__top">
+    <span class="project-card__index">{String(index + 1).padStart(2, '0')}</span>
+    <p class="eyebrow">{project.eyebrow}</p>
+    {project.status && <span class="status">{project.status}</span>}
+  </div>
+  <div class="project-card__body">
+    <div>
+      <h3>{project.title}</h3>
+      <p class="project-card__summary">{project.summary}</p>
+    </div>
+    <ul class="project-card__contributions">
+      {project.contributions.map((contribution) => <li>{contribution}</li>)}
+    </ul>
+  </div>
+  <ul class="tech-list" aria-label={`${project.title} technologies`}>
+    {project.technologies.map((technology) => <li>{technology}</li>)}
+  </ul>
+</article>

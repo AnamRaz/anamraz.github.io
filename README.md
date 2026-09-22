@@ -1,19 +1,34 @@
-# Rawnaz Anam — Engineering Portfolio
+# Rawnaz Anam — Developer Portfolio
 
-Astro portfolio for **Rawnaz Anam**, with the headline **Senior Software Engineer | .NET · Angular · Enterprise Integrations**. Employment history retains the résumé title **Senior Software Developer**.
+Production portfolio for **Rawnaz Anam**, positioning her work across enterprise
+applications, software architecture, technical leadership, and SaaS product
+engineering. The static site is published at
+[anamraz.github.io](https://anamraz.github.io).
 
-The page presents an introduction, professional experience, three selected projects, technical skills, education, and contact details. Selected work covers ongoing enterprise web/PWA modernization, ERP/workflow automation, and **ATARVI**, an independent restaurant operations product in active development and pilot preparation.
+## Technology
+
+- Astro and TypeScript
+- Maintainable plain CSS (no UI framework)
+- `@astrojs/sitemap` for sitemap generation
+- GitHub Actions and GitHub Pages
 
 ## Local development
 
-Use Node.js **22.12 or newer** (Node.js **24** in CI) and npm 10 or newer.
+Prerequisites:
+
+- Node.js 22.12 or newer (Node.js 24 is used in CI)
+- npm 10 or newer
+
+Install dependencies and start the development server:
 
 ```sh
-npm ci
+npm install
 npm run dev
 ```
 
-Run checks and preview the production build:
+Astro prints the local URL, normally `http://localhost:4321`.
+
+Run the production checks:
 
 ```sh
 npm run check
@@ -22,28 +37,53 @@ npm test
 npm run preview
 ```
 
-The preview normally runs at `http://localhost:4321`; static output is in `dist/`. Tests use Node's built-in test runner and require a current production build. No test dependencies are added.
+The static production output is generated in `dist/`.
 
-## Content and assets
+## Site structure
 
-- `src/content/site.ts`: shared headline, metadata copy, career history, projects, skills, education, and links.
-- `src/pages/index.astro`: page hierarchy and contact/résumé actions.
-- `src/layouts/BaseLayout.astro`: metadata, structured data, initial theme, and shared document shell.
-- `src/components/`: navigation, section headings, and project summaries.
-- `src/styles/global.css`: responsive navy/neutral styling, both themes, keyboard focus, and reduced motion.
-- `public/resume.pdf`: owner-authorized phone-free website résumé, prepared from the supplied 2026 Word résumé. The original private document is not stored here.
-- `src/assets/social-card.svg` and `public/social-card.png`: matching editable and rendered social previews (1200 × 630).
-- `tests/portfolio.test.mjs`: built-page regression checks for navigation, metadata, approved destinations, project stages, and the résumé asset.
+```text
+src/
+  components/   Reusable navigation, section, and project components
+  content/      Centralized personal information and portfolio content
+  layouts/      Shared document shell, metadata, and structured data
+  pages/        Routable Astro pages
+  styles/       Global design system and responsive styles
+public/         Static assets, robots.txt, and favicon
+```
 
-The résumé action downloads `/resume.pdf`. Email, LinkedIn, and GitHub use the supplied résumé's destinations. ATARVI information stays on the portfolio; no external product destination is configured.
-
-Keep career content aligned with the owner-approved résumé. Dates and overlapping freelance experience should not be combined to inflate tenure. Project descriptions distinguish current development from completed outcomes.
+All personal links, project content, skills, and the reusable case-study model
+live in [`src/content/site.ts`](src/content/site.ts). Update this file for
+routine content changes rather than editing layout components.
 
 ## Deployment
 
-The existing `.github/workflows/deploy.yml` builds and deploys GitHub Pages on pushes to `main` or manual dispatch. The Astro site URL is `https://anamraz.github.io`, without a subdirectory base. No deployment workflow or repository permissions are changed by this update.
+The workflow in `.github/workflows/deploy.yml` runs on every push to `main` and
+can also be started manually. It uses Astro's official GitHub action to install
+dependencies, build the site, upload the Pages artifact, and deploy it.
 
-Content and changes require owner approval before publication. A local build does not establish that a deployment succeeded.
+This repository is a GitHub user site, so Astro's `site` is
+`https://anamraz.github.io` and no project-subdirectory `base` is configured.
+
+To enable publishing:
+
+1. Open the repository on GitHub.
+2. Go to **Settings → Pages**.
+3. Set **Source** to **GitHub Actions**.
+4. Push or merge the portfolio changes to `main`.
+5. Confirm both the build and deploy jobs pass in the **Actions** tab.
+
+Local build success does not confirm a successful GitHub Pages deployment.
+
+## Public links
+
+Public profile, email, and résumé links are centralized in
+[`src/content/site.ts`](src/content/site.ts). The phone-free website résumé is
+available at `/resume.pdf`, with a download link beside the existing hero actions.
+Career facts follow the owner-supplied 2026 résumé. ATARVI is in active development
+and pilot preparation; its project information stays on this portfolio.
+
+The existing design and page structure are retained. `npm test` checks the built
+page with Node's built-in test runner; run `npm run build` first.
 
 ## License
 

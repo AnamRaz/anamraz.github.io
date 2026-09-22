@@ -43,18 +43,12 @@ import { navigation, site } from '../content/site';
   });
 
   nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
-      const focusWasInMenu = nav?.contains(document.activeElement);
-      closeMenu();
-      if (focusWasInMenu) menuButton.focus();
-    }
-  });
+  window.addEventListener('keydown', (event) => event.key === 'Escape' && closeMenu());
 
   document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
     const root = document.documentElement;
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch {}
+    localStorage.setItem('theme', next);
   });
 </script>

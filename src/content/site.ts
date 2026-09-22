@@ -1,16 +1,21 @@
-/** Shared portfolio content. Career facts follow the owner-supplied 2026 résumé. */
-const headline = 'Senior Software Engineer | .NET · Angular · Enterprise Integrations';
+/**
+ * EDITABLE CONTENT
+ * Update personal details, links, projects, skills, and case studies here.
+ * Keep only approved, public links in this file.
+ */
 
 export const site = {
   name: 'Rawnaz Anam',
-  headline,
+  role: 'Senior Software Engineer | .NET · Angular · Enterprise Integrations',
   employmentTitle: 'Senior Software Developer',
-  title: `Rawnaz Anam | ${headline}`,
-  description: 'Software engineer with 5+ years of experience building and supporting enterprise applications with C#, .NET, Angular, SQL Server, and Oracle. Enterprise integrations, workflow automation, and ongoing web modernization.',
-  introduction: 'I build and support enterprise applications with C#, .NET, Angular, SQL Server, and Oracle. My work spans application delivery, ERP integrations, production troubleshooting, and technical guidance for other developers.',
+  email: 'rawnaz.anam@gmail.com',
+  positioning:
+    'Senior Software Engineer building enterprise applications, ERP integrations, workflow automation, and SaaS products.',
+  title: 'Rawnaz Anam | Senior Software Engineer',
+  description:
+    'Software engineer with 5+ years of experience building and supporting enterprise applications using C#, .NET, Angular, SQL Server, and Oracle, with ERP integrations and workflow automation.',
   url: 'https://anamraz.github.io',
   location: 'Lebanon, PA',
-  email: 'rawnaz.anam@gmail.com',
   links: {
     github: 'https://github.com/AnamRaz',
     linkedin: 'https://www.linkedin.com/in/rawnazanam/',
@@ -19,102 +24,145 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { label: 'Experience', href: '#experience' },
-  { label: 'Selected work', href: '#work' },
-  { label: 'Skills', href: '#expertise' },
-  { label: 'Education', href: '#education' },
+  { label: 'About', href: '#about' },
+  { label: 'Work', href: '#work' },
+  { label: 'Case study', href: '#case-study' },
+  { label: 'Expertise', href: '#expertise' },
   { label: 'Contact', href: '#contact' },
 ] as const;
 
-export const experience = [
+export const impactAreas = [
   {
-    title: site.employmentTitle,
-    dates: 'May 2022 – Present',
-    employer: 'Harrington Hoists, Inc.',
-    context: 'A Columbus McKinnon company · Manheim, PA',
-    contributions: [
-      'Own development and production support for an enterprise platform serving approximately 300 employees, using .NET, Angular, REST APIs, EF Core, Oracle, and SQL Server.',
-      'Develop and maintain 30+ ERP and workflow automations that replace manual and paper-based processes.',
-      'Guide two developers through architecture discussions, code reviews, testing support, and production troubleshooting.',
-    ],
+    number: '01',
+    title: 'Enterprise applications',
+    text: 'Business-critical .NET and Angular systems designed around operational workflows, reliable integrations, and long-term maintainability.',
   },
   {
-    title: 'Application Developer',
-    dates: 'Feb 2021 – May 2022',
-    employer: 'Dutch Valley Food Inc.',
-    context: 'Myerstown, PA',
-    contributions: [
-      'Developed .NET applications, database-driven tools, reports, and integrations supporting daily business operations.',
-      'Automated manual processes and improved the reliability of systems used by operational teams.',
-    ],
+    number: '02',
+    title: 'ERP & workflow automation',
+    text: 'Modern applications and automations that connect JDE EnterpriseOne, JDE Orchestrator, Oracle data, and the teams who depend on them.',
   },
   {
-    title: 'Freelance Web Application Developer',
-    dates: '2017 – 2021',
-    employer: 'Independent Projects',
-    context: 'Remote / Pennsylvania · Overlapping freelance experience',
-    contributions: [
-      'Built websites and web applications for small businesses, from requirements and interface updates to data-driven features, deployment, and client support.',
-    ],
+    number: '03',
+    title: 'Architecture & product',
+    text: 'Architecture discussions, code reviews, and testing support alongside hands-on product development as the founder of ATARVI.',
   },
 ] as const;
-
-export const earlierExperience = 'Earlier experience: Help Desk / Customer Service Representative, Vertical Screen · May 2017 – Feb 2021';
 
 export type Project = {
   title: string;
   eyebrow: string;
-  problem: string;
-  contribution: string;
-  outcome: string;
-  outcomeLabel: 'Current stage' | 'Outcome';
+  summary: string;
+  contributions: readonly string[];
   technologies: readonly string[];
-  status: string;
+  status?: string;
+  href?: string;
+  linkLabel?: string;
+  note?: string;
 };
 
 export const projects: readonly Project[] = [
   {
-    title: 'Enterprise web & PWA modernization',
-    eyebrow: 'Enterprise application development',
-    problem: 'A legacy Electron application needs a web successor that supports local printing and file workflows.',
-    contribution: 'Developing an Angular web/PWA successor, integrating .NET APIs and a Windows helper for local printing and file workflows.',
-    outcome: 'The Angular web/PWA successor is in active development.',
-    outcomeLabel: 'Current stage',
-    technologies: ['Angular', '.NET', 'REST APIs', 'PWA'],
+    title: 'ATARVI',
+    eyebrow: 'Independent product · Founder & Software Engineer · 2025–Present',
+    summary:
+      'An independent restaurant operations product in active development and pilot preparation, covering inventory, recipes, OCR-assisted receipt review, scheduling, and multi-location reporting.',
+    contributions: [
+      'Designing multi-tenant workflows with role-based access',
+      'Owning architecture, implementation, and operator feedback',
+      'Preparing Azure deployment and pilot readiness',
+    ],
+    technologies: ['.NET 10', 'Blazor', 'EF Core', 'SQL Server', 'Azure', 'OCR', 'Role-based access'],
+    status: 'Pilot preparation',
+  },
+  {
+    title: 'Enterprise Workflow Automation',
+    eyebrow: 'ERP integration · Operational impact',
+    summary:
+      'Replacing manual and paper-heavy operational processes with maintainable integrations and automations across modern applications and enterprise systems.',
+    contributions: [
+      'Develop and maintain 30+ ERP and workflow automations',
+      'Connected .NET applications, JDE EnterpriseOne, JDE Orchestrator, and Oracle data',
+      'Replace manual and paper-based processes and support daily operations',
+    ],
+    technologies: ['.NET', 'JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'REST APIs', 'Workflow automation'],
+  },
+  {
+    title: 'Enterprise Application Engineering',
+    eyebrow: 'Full-stack production systems',
+    summary:
+      'Own development and production support for an enterprise platform serving approximately 300 employees, with an Angular web/PWA successor to a legacy Electron application in development.',
+    contributions: [
+      '.NET and Angular delivery across interfaces, APIs, and data workflows',
+      'Integrating .NET APIs and a Windows helper for local printing and file workflows',
+      'Ongoing web/PWA modernization and production troubleshooting',
+    ],
+    technologies: ['.NET', 'Angular', 'REST APIs', 'EF Core', 'SQL Server', 'Oracle'],
     status: 'Ongoing modernization',
   },
   {
-    title: 'ERP & workflow automation',
-    eyebrow: 'Enterprise integrations',
-    problem: 'Operational workflows rely on manual and paper-based processes.',
-    contribution: 'Develop and maintain 30+ ERP and workflow automations, alongside full-stack application delivery and production support.',
-    outcome: 'Automations replace manual and paper-based processes and remain under active maintenance.',
-    outcomeLabel: 'Outcome',
-    technologies: ['.NET', 'JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'SQL Server'],
-    status: 'Development & maintenance',
-  },
-  {
-    title: 'ATARVI',
-    eyebrow: 'Independent product · Founder & Software Engineer · 2025 – Present',
-    problem: 'Restaurant operations span inventory, recipes, receipt review, scheduling, and reporting across locations.',
-    contribution: 'Building a multi-tenant platform with role-based access and OCR-assisted receipt review. Own architecture, implementation, operator feedback, and Azure deployment preparation.',
-    outcome: 'Active development and pilot preparation.',
-    outcomeLabel: 'Current stage',
-    technologies: ['.NET 10', 'Blazor', 'EF Core', 'SQL Server', 'Azure'],
-    status: 'Pilot preparation',
+    title: 'Technical Leadership',
+    eyebrow: 'Engineering enablement',
+    summary:
+      'Guide two developers through architecture discussions, code reviews, testing support, and production troubleshooting.',
+    contributions: [
+      'Architecture guidance and pragmatic design review',
+      'Code reviews, troubleshooting, and testing support',
+      'Development guidance for two developers',
+    ],
+    technologies: ['Architecture guidance', 'Code review', 'Testing support', 'Production support'],
   },
 ];
 
 export const skillGroups = [
-  { title: 'Application development', items: ['C#', '.NET / ASP.NET Core', 'Angular', 'TypeScript / JavaScript', 'Blazor', 'EF Core'] },
-  { title: 'Data & integrations', items: ['SQL Server', 'Oracle', 'REST APIs', 'OpenAPI / Swagger', 'JDE EnterpriseOne', 'JDE Orchestrator'] },
+  { title: 'Application development', items: ['C#', '.NET', 'ASP.NET Core', 'Blazor', 'Angular', 'TypeScript', 'JavaScript', 'EF Core'] },
+  { title: 'Enterprise systems', items: ['SQL Server', 'Oracle', 'REST APIs', 'OpenAPI/Swagger', 'JDE EnterpriseOne', 'JDE Orchestrator'] },
   { title: 'Cloud & delivery', items: ['Azure App Service', 'Azure SQL', 'Blob Storage', 'Key Vault', 'Application Insights', 'GitHub Actions'] },
-  { title: 'Engineering practices', items: ['Authentication / authorization', 'Multi-tenant design', 'Background processing', 'Code review'] },
+  { title: 'Architecture & production', items: ['Authentication & authorization', 'Multi-tenant design', 'Background processing', 'Production troubleshooting'] },
+  { title: 'Leadership', items: ['Architecture guidance', 'Code reviews', 'Testing support', 'Requirements discovery', 'Development guidance'] },
 ] as const;
 
-export const education = {
-  degree: 'B.S. Information Science and Technology',
-  school: 'Temple University',
-  location: 'Philadelphia, PA',
-  date: 'Dec 2020',
-} as const;
+export type CaseStudy = {
+  title: string;
+  intro: string;
+  sections: readonly { label: string; content: string; items?: readonly string[] }[];
+};
+
+export const caseStudy: CaseStudy = {
+  title: 'Modernizing Enterprise Workflows with JDE Automation',
+  intro:
+    'A sanitized view of enterprise automation work. Employer, application, and internal architecture details are intentionally omitted.',
+  sections: [
+    {
+      label: 'Problem',
+      content:
+        'Operational workflows depended on manual entry, paper processes, or disconnected systems, adding avoidable effort and making consistent execution harder.',
+    },
+    {
+      label: 'Constraints',
+      content:
+        'The work spans enterprise applications, ERP integrations, and continued production support.',
+    },
+    {
+      label: 'Approach',
+      content:
+        'Built and maintained integrations and automations using modern .NET applications, Oracle data, JDE EnterpriseOne, JDE Orchestrator, and supporting APIs.',
+    },
+    {
+      label: 'Engineering considerations',
+      content:
+        'Application delivery is supported by architecture discussions, code reviews, testing support, and production troubleshooting.',
+      items: [
+        'Architecture guidance',
+        'Code reviews',
+        'Testing support',
+        'Production troubleshooting',
+      ],
+    },
+    {
+      label: 'Outcome',
+      content:
+        'Develop and maintain 30+ ERP and workflow automations that replace manual and paper-based processes.',
+    },
+  ],
+};

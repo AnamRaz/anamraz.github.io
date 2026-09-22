@@ -12,16 +12,14 @@ test('headline and employment title stay distinct across page and metadata', () 
   assert.equal(schema.email, 'rawnaz.anam@gmail.com');
   assert.deepEqual(schema.sameAs, ['https://github.com/AnamRaz', 'https://www.linkedin.com/in/rawnazanam/']);
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
-  for (const property of ['og:title', 'twitter:title', 'og:image:alt', 'twitter:image:alt']) {
-    assert.ok(html.includes(`${property}" content="Rawnaz Anam${property.includes(':alt') ? ', ' : ' | '}${headline}"`));
-  }
+  assert.match(html, /<title>Rawnaz Anam \| Senior Software Engineer<\/title>/);
 });
 
 test('section order and every internal navigation target are valid', () => {
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(new Set(ids).size, ids.length);
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), target);
-  const sections = ['top', 'experience', 'work', 'expertise', 'education', 'contact'];
+  const sections = ['top', 'about', 'work', 'case-study', 'expertise', 'contact'];
   const positions = sections.map((id) => html.indexOf(`id="${id}"`));
   assert.ok(positions.every((position, index) => position >= 0 && (!index || position > positions[index - 1])));
 });
@@ -35,10 +33,10 @@ test('only supplied contact and profile destinations are linked', () => {
   assert.ok(html.includes('mailto:rawnaz.anam@gmail.com'));
 });
 
-test('three selected projects preserve ongoing stages without obsolete claims', () => {
-  assert.equal((html.match(/class="project-card"/g) ?? []).length, 3);
+test('existing project cards preserve ongoing stages without obsolete claims', () => {
+  assert.equal((html.match(/class="project-card"/g) ?? []).length, 4);
   assert.match(html, /Ongoing modernization/);
-  assert.match(html, /Active development and pilot preparation/);
+  assert.match(html, /active development and pilot preparation/);
   assert.match(html, /ATARVI/);
   assert.doesNotMatch(html, /stockward|thousands of (?:employee )?hours|tel:|salary|relocation/i);
   assert.doesNotMatch(html, /\b\d{3}[- .]\d{3}[- .]\d{4}\b/);

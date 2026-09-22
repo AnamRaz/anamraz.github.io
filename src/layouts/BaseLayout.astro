@@ -1,6 +1,6 @@
 ---
 import Header from '../components/Header.astro';
-import { site } from '../content/site';
+import { site, skillGroups } from '../content/site';
 import '../styles/global.css';
 
 interface Props {
@@ -16,9 +16,10 @@ const personSchema = {
   '@type': 'Person',
   name: site.name,
   url: site.url,
-  jobTitle: 'Senior Software Engineer',
+  jobTitle: site.employmentTitle,
   description,
-  knowsAbout: ['Software architecture', '.NET', 'Enterprise applications', 'JDE EnterpriseOne', 'ERP automation', 'SaaS products', 'Azure'],
+  knowsAbout: skillGroups.flatMap((group) => [...group.items]),
+  email: site.email,
   sameAs: [site.links.github, site.links.linkedin],
 };
 ---
@@ -33,8 +34,8 @@ const personSchema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#101815" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111c2d" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -43,16 +44,18 @@ const personSchema = {
     <meta property="og:image" content={`${site.url}/social-card.png`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Rawnaz Anam, Senior Software Engineer" />
+    <meta property="og:image:alt" content={`${site.name}, ${site.headline}`} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${site.url}/social-card.png`} />
+    <meta name="twitter:image:alt" content={`${site.name}, ${site.headline}`} />
     <script is:inline>
       (() => {
-        const saved = localStorage.getItem('theme');
+        let saved;
+        try { saved = localStorage.getItem('theme'); } catch {}
         const preferred = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = saved || preferred;
+        document.documentElement.dataset.theme = saved === 'dark' || saved === 'light' ? saved : preferred;
       })();
     </script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />

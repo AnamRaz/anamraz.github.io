@@ -1,168 +1,120 @@
-/**
- * EDITABLE CONTENT
- * Update personal details, links, projects, skills, and case studies here.
- * Keep only approved, public links in this file.
- */
+/** Shared portfolio content. Career facts follow the owner-supplied 2026 résumé. */
+const headline = 'Senior Software Engineer | .NET · Angular · Enterprise Integrations';
 
 export const site = {
   name: 'Rawnaz Anam',
-  role: 'Senior Software Engineer',
-  positioning:
-    'Senior Software Engineer building enterprise applications, ERP integrations, workflow automation, and SaaS products.',
-  title: 'Rawnaz Anam | Senior Software Engineer',
-  description:
-    'Senior Software Engineer specializing in .NET, Azure, Angular, JDE EnterpriseOne, ERP automation, enterprise applications, and SaaS development.',
+  headline,
+  employmentTitle: 'Senior Software Developer',
+  title: `Rawnaz Anam | ${headline}`,
+  description: 'Software engineer with 5+ years of experience building and supporting enterprise applications with C#, .NET, Angular, SQL Server, and Oracle. Enterprise integrations, workflow automation, and ongoing web modernization.',
+  introduction: 'I build and support enterprise applications with C#, .NET, Angular, SQL Server, and Oracle. My work spans application delivery, ERP integrations, production troubleshooting, and technical guidance for other developers.',
   url: 'https://anamraz.github.io',
-  location: 'United States',
+  location: 'Lebanon, PA',
+  email: 'rawnaz.anam@gmail.com',
   links: {
     github: 'https://github.com/AnamRaz',
     linkedin: 'https://www.linkedin.com/in/rawnazanam/',
-    stockward: 'https://anamraz.github.io/stockward-website/',
+    resume: '/resume.pdf',
   },
 } as const;
 
 export const navigation = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#work' },
-  { label: 'Case study', href: '#case-study' },
-  { label: 'Expertise', href: '#expertise' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Selected work', href: '#work' },
+  { label: 'Skills', href: '#expertise' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ] as const;
 
-export const impactAreas = [
+export const experience = [
   {
-    number: '01',
-    title: 'Enterprise applications',
-    text: 'Business-critical .NET and Angular systems designed around operational workflows, reliable integrations, and long-term maintainability.',
+    title: site.employmentTitle,
+    dates: 'May 2022 – Present',
+    employer: 'Harrington Hoists, Inc.',
+    context: 'A Columbus McKinnon company · Manheim, PA',
+    contributions: [
+      'Own development and production support for an enterprise platform serving approximately 300 employees, using .NET, Angular, REST APIs, EF Core, Oracle, and SQL Server.',
+      'Develop and maintain 30+ ERP and workflow automations that replace manual and paper-based processes.',
+      'Guide two developers through architecture discussions, code reviews, testing support, and production troubleshooting.',
+    ],
   },
   {
-    number: '02',
-    title: 'ERP & workflow automation',
-    text: 'Modern applications and automations that connect JDE EnterpriseOne, JDE Orchestrator, Oracle data, and the teams who depend on them.',
+    title: 'Application Developer',
+    dates: 'Feb 2021 – May 2022',
+    employer: 'Dutch Valley Food Inc.',
+    context: 'Myerstown, PA',
+    contributions: [
+      'Developed .NET applications, database-driven tools, reports, and integrations supporting daily business operations.',
+      'Automated manual processes and improved the reliability of systems used by operational teams.',
+    ],
   },
   {
-    number: '03',
-    title: 'Architecture & product',
-    text: 'Technical guidance for production teams alongside hands-on SaaS architecture and development as the founder of Stockward.',
+    title: 'Freelance Web Application Developer',
+    dates: '2017 – 2021',
+    employer: 'Independent Projects',
+    context: 'Remote / Pennsylvania · Overlapping freelance experience',
+    contributions: [
+      'Built websites and web applications for small businesses, from requirements and interface updates to data-driven features, deployment, and client support.',
+    ],
   },
 ] as const;
+
+export const earlierExperience = 'Earlier experience: Help Desk / Customer Service Representative, Vertical Screen · May 2017 – Feb 2021';
 
 export type Project = {
   title: string;
   eyebrow: string;
-  summary: string;
-  contributions: readonly string[];
+  problem: string;
+  contribution: string;
+  outcome: string;
+  outcomeLabel: 'Current stage' | 'Outcome';
   technologies: readonly string[];
-  status?: string;
-  href?: string;
-  linkLabel?: string;
-  note?: string;
+  status: string;
 };
 
 export const projects: readonly Project[] = [
   {
-    title: 'Stockward',
-    eyebrow: 'SaaS product · Founder & software architect',
-    summary:
-      'A multi-tenant restaurant operations platform designed to help multi-location operators manage inventory, financial workflows, scheduling, receipt processing, and external sales data.',
-    contributions: [
-      'Designing multi-tenant, role-based operational workflows',
-      'Building reporting, scheduling, and OCR-assisted receipt processing',
-      'Preparing the platform for pilot production use',
-    ],
-    technologies: ['.NET 10', 'Blazor Server', 'EF Core', 'SQL Server', 'Azure', 'OCR', 'Role-based access', 'External integrations'],
-    status: 'Active development',
-    href: site.links.stockward,
-    linkLabel: 'Visit Stockward',
-    note: 'Product source is maintained privately while public product information is available through the Stockward website.',
+    title: 'Enterprise web & PWA modernization',
+    eyebrow: 'Enterprise application development',
+    problem: 'A legacy Electron application needs a web successor that supports local printing and file workflows.',
+    contribution: 'Developing an Angular web/PWA successor, integrating .NET APIs and a Windows helper for local printing and file workflows.',
+    outcome: 'The Angular web/PWA successor is in active development.',
+    outcomeLabel: 'Current stage',
+    technologies: ['Angular', '.NET', 'REST APIs', 'PWA'],
+    status: 'Ongoing modernization',
   },
   {
-    title: 'Enterprise Workflow Automation',
-    eyebrow: 'ERP integration · Operational impact',
-    summary:
-      'Replacing manual and paper-heavy operational processes with maintainable integrations and automations across modern applications and enterprise systems.',
-    contributions: [
-      'Created and maintains more than 30 ERP and workflow automations',
-      'Connected .NET applications, JDE EnterpriseOne, JDE Orchestrator, and Oracle data',
-      'Saved thousands of employee hours annually while preserving operational reliability',
-    ],
-    technologies: ['.NET', 'JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'REST APIs', 'Workflow automation'],
+    title: 'ERP & workflow automation',
+    eyebrow: 'Enterprise integrations',
+    problem: 'Operational workflows rely on manual and paper-based processes.',
+    contribution: 'Develop and maintain 30+ ERP and workflow automations, alongside full-stack application delivery and production support.',
+    outcome: 'Automations replace manual and paper-based processes and remain under active maintenance.',
+    outcomeLabel: 'Outcome',
+    technologies: ['.NET', 'JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'SQL Server'],
+    status: 'Development & maintenance',
   },
   {
-    title: 'Enterprise Application Engineering',
-    eyebrow: 'Full-stack production systems',
-    summary:
-      'Building and modernizing production applications that connect operational teams with the data and business systems they use every day.',
-    contributions: [
-      '.NET and Angular delivery across interfaces, APIs, and data workflows',
-      'Authorization and integration across Oracle, SQL Server, and business systems',
-      'Production troubleshooting, performance improvement, and reliability work',
-    ],
-    technologies: ['ASP.NET Core', 'Angular', 'REST APIs', 'SQL Server', 'Oracle', 'Authorization', 'Azure'],
-  },
-  {
-    title: 'Technical Leadership',
-    eyebrow: 'Engineering enablement',
-    summary:
-      'Helping developers and delivery teams make sound technical decisions and support business-critical systems with consistency.',
-    contributions: [
-      'Architecture guidance and pragmatic design review',
-      'Code reviews, troubleshooting, and testing support',
-      'Mentoring, development guidance, and consistent engineering practices',
-    ],
-    technologies: ['Architecture guidance', 'Code review', 'Mentoring', 'Testing', 'Production support'],
+    title: 'ATARVI',
+    eyebrow: 'Independent product · Founder & Software Engineer · 2025 – Present',
+    problem: 'Restaurant operations span inventory, recipes, receipt review, scheduling, and reporting across locations.',
+    contribution: 'Building a multi-tenant platform with role-based access and OCR-assisted receipt review. Own architecture, implementation, operator feedback, and Azure deployment preparation.',
+    outcome: 'Active development and pilot preparation.',
+    outcomeLabel: 'Current stage',
+    technologies: ['.NET 10', 'Blazor', 'EF Core', 'SQL Server', 'Azure'],
+    status: 'Pilot preparation',
   },
 ];
 
 export const skillGroups = [
-  { title: 'Application development', items: ['C#', '.NET', 'ASP.NET Core', 'Blazor', 'Angular', 'TypeScript', 'REST APIs', 'Entity Framework Core'] },
-  { title: 'Enterprise systems', items: ['JDE EnterpriseOne', 'JDE Orchestrator', 'Oracle', 'ERP integrations', 'Workflow automation', 'Operational reporting'] },
-  { title: 'Cloud & delivery', items: ['Azure App Service', 'Azure SQL', 'Blob Storage', 'Key Vault', 'Application Insights', 'GitHub Actions', 'Docker', 'CI/CD'] },
-  { title: 'Architecture & production', items: ['Authentication & authorization', 'Multi-tenant architecture', 'Background processing', 'Production troubleshooting', 'Performance optimization', 'Logging & observability', 'Testing', 'Deployment safety'] },
-  { title: 'Leadership', items: ['Architecture guidance', 'Code reviews', 'Mentoring', 'Requirements discovery', 'Cross-functional problem solving'] },
+  { title: 'Application development', items: ['C#', '.NET / ASP.NET Core', 'Angular', 'TypeScript / JavaScript', 'Blazor', 'EF Core'] },
+  { title: 'Data & integrations', items: ['SQL Server', 'Oracle', 'REST APIs', 'OpenAPI / Swagger', 'JDE EnterpriseOne', 'JDE Orchestrator'] },
+  { title: 'Cloud & delivery', items: ['Azure App Service', 'Azure SQL', 'Blob Storage', 'Key Vault', 'Application Insights', 'GitHub Actions'] },
+  { title: 'Engineering practices', items: ['Authentication / authorization', 'Multi-tenant design', 'Background processing', 'Code review'] },
 ] as const;
 
-export type CaseStudy = {
-  title: string;
-  intro: string;
-  sections: readonly { label: string; content: string; items?: readonly string[] }[];
-};
-
-export const caseStudy: CaseStudy = {
-  title: 'Modernizing Enterprise Workflows with JDE Automation',
-  intro:
-    'A sanitized view of enterprise automation work. Employer, application, and internal architecture details are intentionally omitted.',
-  sections: [
-    {
-      label: 'Problem',
-      content:
-        'Operational workflows depended on manual entry, paper processes, or disconnected systems, adding avoidable effort and making consistent execution harder.',
-    },
-    {
-      label: 'Constraints',
-      content:
-        'Solutions had to work with existing ERP data, business rules, production operations, and legacy dependencies without disrupting daily work.',
-    },
-    {
-      label: 'Approach',
-      content:
-        'Built and maintained integrations and automations using modern .NET applications, Oracle data, JDE EnterpriseOne, JDE Orchestrator, and supporting APIs.',
-    },
-    {
-      label: 'Engineering considerations',
-      content:
-        'Production automation required more than a successful happy path. Each workflow was shaped around operational safety and supportability.',
-      items: [
-        'Data validation and authorization',
-        'Failure handling and logging',
-        'Operational support and backward compatibility',
-        'Maintainability and gradual rollout',
-      ],
-    },
-    {
-      label: 'Outcome',
-      content:
-        'More than 30 automated workflows were delivered and maintained, replacing manual processes and saving thousands of employee hours annually.',
-    },
-  ],
-};
+export const education = {
+  degree: 'B.S. Information Science and Technology',
+  school: 'Temple University',
+  location: 'Philadelphia, PA',
+  date: 'Dec 2020',
+} as const;

@@ -76,9 +76,10 @@ Local build success does not confirm a successful GitHub Pages deployment.
 
 ## Public links
 
-Public profile, email, and résumé links are centralized in
-[`src/content/site.ts`](src/content/site.ts). The phone-free website résumé is
-available at `/resume.pdf`, with a download link beside the existing hero actions.
+Public profile and résumé links are centralized in
+[`src/content/site.ts`](src/content/site.ts). The public website résumé without
+personal contact details is available at `/resume.pdf`, with a download link beside
+the existing hero actions.
 Career facts follow the owner-supplied 2026 résumé. ATARVI is in active development
 and pilot preparation; its project information stays on this portfolio.
 

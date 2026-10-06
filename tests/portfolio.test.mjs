@@ -9,7 +9,9 @@ test('headline and employment title stay distinct across page and metadata', () 
   assert.ok(html.includes(headline));
   const schema = JSON.parse(html.match(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/s)[1]);
   assert.equal(schema.jobTitle, 'Senior Software Developer');
-  assert.equal(schema.email, 'rawnaz.anam@gmail.com');
+  assert.equal(Object.hasOwn(schema, 'email'), false);
+  assert.equal(Object.hasOwn(schema, 'address'), false);
+  assert.equal(Object.hasOwn(schema, 'homeLocation'), false);
   assert.deepEqual(schema.sameAs, ['https://github.com/AnamRaz', 'https://www.linkedin.com/in/rawnazanam/']);
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
   assert.match(html, /<title>Rawnaz Anam \| Senior Software Engineer<\/title>/);
@@ -25,12 +27,12 @@ test('section order and every internal navigation target are valid', () => {
 });
 
 test('only supplied contact and profile destinations are linked', () => {
-  const allowed = new Set(['mailto:rawnaz.anam@gmail.com', 'https://github.com/AnamRaz', 'https://www.linkedin.com/in/rawnazanam/']);
+  const allowed = new Set(['https://github.com/AnamRaz', 'https://www.linkedin.com/in/rawnazanam/']);
   // Inspect rendered anchors, excluding canonical and other document metadata links.
   for (const [, destination] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
     assert.ok(destination.startsWith('#') || destination === '/resume.pdf' || allowed.has(destination), destination);
   }
-  assert.ok(html.includes('mailto:rawnaz.anam@gmail.com'));
+  assert.doesNotMatch(html, /mailto:|tel:|Based in|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
 });
 
 test('existing project cards preserve ongoing stages without obsolete claims', () => {

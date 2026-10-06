@@ -8,14 +8,12 @@ export const site = {
   name: 'Rawnaz Anam',
   role: 'Senior Software Engineer | .NET · Angular · Enterprise Integrations',
   employmentTitle: 'Senior Software Developer',
-  email: 'rawnaz.anam@gmail.com',
   positioning:
     'Senior Software Engineer building enterprise applications, ERP integrations, workflow automation, and SaaS products.',
   title: 'Rawnaz Anam | Senior Software Engineer',
   description:
     'Software engineer with 5+ years of experience building and supporting enterprise applications using C#, .NET, Angular, SQL Server, and Oracle, with ERP integrations and workflow automation.',
   url: 'https://anamraz.github.io',
-  location: 'Lebanon, PA',
   links: {
     github: 'https://github.com/AnamRaz',
     linkedin: 'https://www.linkedin.com/in/rawnazanam/',

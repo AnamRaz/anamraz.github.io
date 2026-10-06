@@ -19,7 +19,6 @@ const personSchema = {
   jobTitle: site.employmentTitle,
   description,
   knowsAbout: skillGroups.flatMap((group) => [...group.items]),
-  email: site.email,
   sameAs: [site.links.github, site.links.linkedin],
 };
 ---

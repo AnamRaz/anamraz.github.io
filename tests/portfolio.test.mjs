@@ -44,6 +44,29 @@ test('existing project cards preserve ongoing stages without obsolete claims', (
   assert.doesNotMatch(html, /\b\d{3}[- .]\d{3}[- .]\d{4}\b/);
 });
 
+test('career facts reflect project-based experience and application ownership', () => {
+  assert.match(html, /10\+ years in professional software and web development/);
+  assert.match(html, /Joomla projects in 2015/);
+  assert.match(html, /project-based work overlapped with/);
+  assert.match(html, /QuickNet&#39;s Electron-based application and frontend/);
+  assert.match(html, /Proficient TypeScript development/);
+  assert.match(html, /Create Nucleus APIs for QuickNet and REST APIs that enable Nucleus\/JDE integration/);
+  assert.match(html, /Hub and Smart Source, a customer-facing warranty claims platform/);
+  assert.match(html, /local Windows helper/);
+  assert.match(html, /production rollout is not yet complete/);
+  assert.doesNotMatch(html, /5\+ years/);
+});
+
+test('ATARVI is the company beneath its founder role', () => {
+  const cards = [...html.matchAll(/<article class="project-card">(.*?)<\/article>/gs)];
+  const atarvi = cards.find(([, card]) => /<h3>\s*ATARVI\s*<\/h3>/.test(card))?.[1];
+  assert.ok(atarvi);
+  assert.match(atarvi, /Founder &amp; Software Engineer/);
+  assert.match(atarvi, /independent software company/i);
+  assert.ok(atarvi.indexOf('Founder &amp; Software Engineer') < atarvi.indexOf('<h3>'));
+  assert.match(atarvi, /active development and pilot preparation/);
+});
+
 test('the résumé download points to the exact public PDF included in the build', async () => {
   assert.match(html, /<a\b[^>]*href="\/resume\.pdf"[^>]*\bdownload(?:[\s=>])/);
   const original = await readFile(new URL('../public/resume.pdf', import.meta.url));

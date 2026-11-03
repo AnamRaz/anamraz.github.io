@@ -12,7 +12,7 @@ export const site = {
     'Senior Software Engineer building enterprise applications, ERP integrations, workflow automation, and SaaS products.',
   title: 'Rawnaz Anam | Senior Software Engineer',
   description:
-    'Software engineer with 5+ years of experience building and supporting enterprise applications using C#, .NET, Angular, SQL Server, and Oracle, with ERP integrations and workflow automation.',
+    'Software engineer with 10+ years in professional software and web development, beginning with Joomla projects in 2015. Strengths include C#/.NET, TypeScript/Angular, APIs, and enterprise integrations.',
   url: 'https://anamraz.github.io',
   links: {
     github: 'https://github.com/AnamRaz',
@@ -33,7 +33,7 @@ export const impactAreas = [
   {
     number: '01',
     title: 'Enterprise applications',
-    text: 'Business-critical .NET and Angular systems designed around operational workflows, reliable integrations, and long-term maintainability.',
+    text: 'C#/.NET, TypeScript, and Angular applications designed around operational workflows, reliable APIs, and long-term maintainability.',
   },
   {
     number: '02',
@@ -62,9 +62,9 @@ export type Project = {
 export const projects: readonly Project[] = [
   {
     title: 'ATARVI',
-    eyebrow: 'Independent product · Founder & Software Engineer · 2025–Present',
+    eyebrow: 'Founder & Software Engineer · 2025–Present',
     summary:
-      'An independent restaurant operations product in active development and pilot preparation, covering inventory, recipes, OCR-assisted receipt review, scheduling, and multi-location reporting.',
+      'An independent software company developing a restaurant operations product, covering inventory, recipes, OCR-assisted receipt review, scheduling, and multi-location reporting. The product is in active development and pilot preparation.',
     contributions: [
       'Designing multi-tenant workflows with role-based access',
       'Owning architecture, implementation, and operator feedback',
@@ -89,13 +89,13 @@ export const projects: readonly Project[] = [
     title: 'Enterprise Application Engineering',
     eyebrow: 'Full-stack production systems',
     summary:
-      'Own development and production support for an enterprise platform serving approximately 300 employees, with an Angular web/PWA successor to a legacy Electron application in development.',
+      'Built QuickNet\'s Electron-based application and frontend, and company MVC web applications including Hub and Smart Source, a customer-facing warranty claims platform. Own ongoing application development and production support.',
     contributions: [
-      '.NET and Angular delivery across interfaces, APIs, and data workflows',
-      'Integrating .NET APIs and a Windows helper for local printing and file workflows',
-      'Ongoing web/PWA modernization and production troubleshooting',
+      'Proficient TypeScript development through QuickNet application and frontend delivery',
+      'Create Nucleus APIs for QuickNet and REST APIs that enable Nucleus/JDE integration',
+      'Built an Angular web/PWA successor with .NET APIs and a local Windows helper for printing and file workflows; production rollout is not yet complete',
     ],
-    technologies: ['.NET', 'Angular', 'REST APIs', 'EF Core', 'SQL Server', 'Oracle'],
+    technologies: ['C#', '.NET', 'TypeScript', 'Angular', 'Electron', 'MVC', 'REST APIs', 'SQL Server', 'Oracle'],
     status: 'Ongoing modernization',
   },
   {
@@ -113,7 +113,7 @@ export const projects: readonly Project[] = [
 ];
 
 export const skillGroups = [
-  { title: 'Application development', items: ['C#', '.NET', 'ASP.NET Core', 'Blazor', 'Angular', 'TypeScript', 'JavaScript', 'EF Core'] },
+  { title: 'Application development', items: ['C#', '.NET', 'TypeScript', 'Angular', 'ASP.NET Core', 'MVC', 'Electron', 'Blazor', 'JavaScript', 'EF Core'] },
   { title: 'Enterprise systems', items: ['SQL Server', 'Oracle', 'REST APIs', 'OpenAPI/Swagger', 'JDE EnterpriseOne', 'JDE Orchestrator'] },
   { title: 'Cloud & delivery', items: ['Azure App Service', 'Azure SQL', 'Blob Storage', 'Key Vault', 'Application Insights', 'GitHub Actions'] },
   { title: 'Architecture & production', items: ['Authentication & authorization', 'Multi-tenant design', 'Background processing', 'Production troubleshooting'] },
